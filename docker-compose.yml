@@ -1,0 +1,28 @@
+
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      # Change this to "Green (v2.0)" to test your deployment shifts
+      - APP_VERSION=Blue (v1.0)
+    networks:
+      - cloud-net
+  
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    environment:
+      # In cloud deployments, point this to your backend's public Load Balancer URL
+      - REACT_APP_API_URL=http://localhost:5000
+    depends_on:
+      - backend
+    networks:
+      - cloud-net
+
+networks:
+  cloud-net:
+    driver: bridge

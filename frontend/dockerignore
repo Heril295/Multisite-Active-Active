@@ -1,0 +1,16 @@
+#Node
+node_modules
+
+# Version Control
+.git
+.gitignore
+
+#IDE and Editor files
+.vscode
+.idea
+
+#Environment files
+.env.*
+
+#Testing
+*.test.js
